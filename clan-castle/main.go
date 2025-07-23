@@ -11,6 +11,9 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Hello, World!")
 	})
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNoContent) // Return 204 No Content for favicon requests
+	})
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
